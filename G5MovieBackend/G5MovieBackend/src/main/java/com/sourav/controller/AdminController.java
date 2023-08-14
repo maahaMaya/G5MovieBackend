@@ -19,10 +19,10 @@ public class AdminController {
 	AdminService adminService;
 
 	@PostMapping(value = "/login")
-	public boolean AdminLogin(@RequestBody Map loginData) {
+	public boolean AdminLogin(@RequestBody Map adminLoginCredentials) {
 		try {
-			String emaiId = (String) loginData.get("emailId");
-			String password = (String) loginData.get("password");
+			String emaiId = (String) adminLoginCredentials.get("emailId");
+			String password = (String) adminLoginCredentials.get("password");
 			return adminService.AdminLogin(emaiId, password);
 		} catch (Exception e) {
 			System.out.println(e);
