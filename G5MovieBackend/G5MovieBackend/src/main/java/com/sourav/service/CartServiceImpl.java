@@ -53,7 +53,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<Cart> getAllCartItems() {
 		try {
-			cartRepository.findAll();
+			return cartRepository.findAll();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -64,8 +64,9 @@ public class CartServiceImpl implements CartService {
 	public boolean plusOneCartItem(Cart cart) {
 		try {
 			int cartCurrentQunatity = cart.getQuantity();
-			cart.setQuantity(cartCurrentQunatity + 1);
-			cart.setPrice((cartCurrentQunatity+1) * cart.getPrice());
+			int quant = cartCurrentQunatity + 1;
+			cart.setQuantity(quant);
+			cart.setPrice(quant * cart.getMovie().getMovieTicketPrice());
 			cartRepository.save(cart);
 			return true;
 		} catch (Exception e) {
@@ -79,7 +80,7 @@ public class CartServiceImpl implements CartService {
 		try {
 			int cartCurrentQunatity = cart.getQuantity();
 			cart.setQuantity(cartCurrentQunatity - 1);
-			cart.setPrice((cartCurrentQunatity-1) * cart.getPrice());
+			cart.setPrice((cartCurrentQunatity-1) * cart.getMovie().getMovieTicketPrice());
 			cartRepository.save(cart);
 			return true;
 		} catch (Exception e) {

@@ -48,7 +48,7 @@ public class CustomerController {
 		return null;
 	}
 	
-	@GetMapping(value = "/login")
+	@PostMapping(value = "/login")
 	public boolean customerLogin(@RequestBody Map adminLoginCredentials) {
 		try {
 			String emaiId = (String) adminLoginCredentials.get("emailId");
