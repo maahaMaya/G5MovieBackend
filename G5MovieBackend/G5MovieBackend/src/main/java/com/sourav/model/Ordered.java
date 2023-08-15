@@ -26,20 +26,26 @@ public class Ordered {
 
 	@Column(name = "email_id")
 	private String emailId;
+	
+	@Column(name = "currdate")
+	private Date currDate;
+	
+	@Column(name = "transaction_id")
+	private int transactionId;
 
 	public Ordered() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	public Ordered(int quantity, float price, String emailId) {
+	public Ordered(int quantity, float price, String emailId, Date currDate, int transactionId) {
 		super();
 		this.quantity = quantity;
 		this.price = price;
 		this.emailId = emailId;
+		this.currDate = currDate;
+		this.transactionId = transactionId;
 	}
-
 
 	public long getOid() {
 		return oid;
@@ -73,4 +79,19 @@ public class Ordered {
 		this.emailId = emailId;
 	}
 
+	public Date getCurrentDate() {
+		return currDate;
+	}
+
+	public void setCurrentDate(Date currDate) {
+		this.currDate = currDate;
+	}
+
+	public int getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
+	}
 }

@@ -1,5 +1,7 @@
 package com.sourav.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,9 @@ public class OrderedServiceImpl implements OrderedService{
 				totalPrice += cartData.getPrice();
 				totalQunatity += cartData.getQuantity();
 			}
-			Ordered ordered = new Ordered(totalQunatity,totalPrice, emailId);
+			java.sql.Date currentDate = new java.sql.Date(new java.util.Date().getTime());
+			int randomWithMathRandom = (int) ((Math.random() * (9999 - 2222)) + 2222);
+			Ordered ordered = new Ordered(totalQunatity, totalPrice, emailId, currentDate, randomWithMathRandom);
 			orderedRepository.save(ordered);
 			cartRepository.deleteAll();
 			return true;
