@@ -15,7 +15,7 @@ public interface CustomerService {
 	//Method to update Customer
 	public boolean updateCustomer(Customer customer);
 	
-	//Method to update Customer
+	//Method to delete Customer
 	public boolean deleteCustomer(String emailId);
 	
 	//Method to view all Customer
@@ -26,4 +26,7 @@ public interface CustomerService {
 	
 	//find Customer using email
 	public Optional<Customer> searchCustomerByEmail(String emailId);
+	
+	//update customer password
+	public boolean updateCustomerPassword(String emailId, String password);	
 }

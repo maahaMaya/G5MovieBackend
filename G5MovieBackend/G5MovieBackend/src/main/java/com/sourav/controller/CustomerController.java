@@ -103,4 +103,17 @@ public class CustomerController {
 		}
 		return null;
 	}
+	
+	@PutMapping(value = "/updatePassword")
+	public boolean updateCustomerPassword(@RequestBody Map adminUpdatePassword) {
+		try {
+			String emaiId = (String) adminUpdatePassword.get("emailId");
+			String password = (String) adminUpdatePassword.get("password");
+			System.out.println(emaiId + "  "+password);
+			return customerService.updateCustomerPassword(emaiId, password);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 }

@@ -99,4 +99,22 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 		return null;
 	}
+
+	@Override
+	public boolean updateCustomerPassword(String emailId, String password) {
+		try {
+			List<Customer> allCustomerData = customerRepository.findAll();
+
+			for (Customer customerData : allCustomerData) {
+				if ((customerData.getEmailId()).equals(emailId)) {
+					customerData.setPassword(password);
+					customerRepository.saveAndFlush(customerData);
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 }
